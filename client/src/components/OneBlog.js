@@ -10,6 +10,7 @@ export default function OneBlog() {
     const nav = useNavigate()
 
     const [oneBlog, setOneBlog] = useState({})
+    const [comments, setComments] = useState([])
 
     console.log("id: ", id)
     // console.log("one blog: ", OneBlog)
@@ -17,33 +18,38 @@ export default function OneBlog() {
     useEffect(() => {
         getOneBlog(id)
         .then(res => res.json())
-        .then(res => setOneBlog(res))
+        .then(res => {
+            setOneBlog(res)
+            setComments(res.comments)
+        }) 
     },[])
-    console.log("res : ", oneBlog)
+
+    console.log("oneBlog : ", oneBlog)
 
     const deleteTheBlog = () => {
         deleteBlog(id)
         nav('/')
     }
-
+    console.log("comments: ", oneBlog.comments)
     return(
         <div> 
             <h3>Title: {oneBlog.title}</h3>
             <h4> {oneBlog.body}</h4>
-            {/* <h4> {oneBlog.comments.cName}</h4> */}
+            
 
-            {/* {oneBlog.comments.map((comment,index) => {
+            {comments.map((comment,index) => {
                 return (
-                    <div className='commentGrid'>
-                    <h4>User Name: {comment.cName}  || comments: {comment.cMessage} </h4>
+                    <div >
+                    <h4>User Name: {comment.cName}  </h4>
+                    <h4>Comment: {comment.cMessage}  </h4>
                     </div>
                 )
-            })} */}
+            })}
             
             <br/>
             <button onClick={() => {nav("/")}}>Blogs Lists</button>
             <br/><br/>
-            {/* <button onClick={() => {nav(`/${id}/update`)}}>Edit</button> */}
+            <button onClick={() => {nav(`/${id}/update`)}}>Edit</button>
             <button onClick={deleteTheBlog}>Delete</button>
 
         </div>

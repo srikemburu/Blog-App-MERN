@@ -5,7 +5,7 @@ import Blogs from "./components/Blogs"
 import OneBlog from "./components/OneBlog"
 import NewBlog from "./components/NewBlog"
 import DeleteBlog from './components/DeleteBlog';
-// import UpdateBlog from './components/UpdateBlog';
+import UpdateBlog from './components/UpdateBlog';
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Route path="/:id" element={<OneBlog/>} />
           <Route path="/new" element={<NewBlog/> } /> 
           <Route path="/delete/:id" element={<DeleteBlog/> } />
-          {/* <Route path="/:id/update" element={<UpdateBlog/> } />            */}
+          <Route path="/:id/update" element={<UpdateBlog/> } />           
         </Routes>
       </Router>
     </div>

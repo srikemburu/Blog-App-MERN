@@ -6,6 +6,9 @@ export const getBlogs = () => {
 export const getOneBlog = (id) => {
     const URL = `http://localhost:3001/blogs/${id}`
     return fetch(URL)
+    // const res = fetch(URL)
+    // console.log("res: ", res)
+    // return res
 }
 
 export const deleteBlog = (id) => {
@@ -24,14 +27,14 @@ export const createBlog = (inputDoc) => {
       .then(res=>res.json())
 }
 
-// export const updateBlog = (inputDoc,id) => {
-//     const URL = `http://localhost:3001/blogs/${id}`
+export const updateBlog = (inputDoc,id) => {
+    const URL = `http://localhost:3001/blogs/${id}`
 
-//     return fetch(URL, {body: JSON.stringify(inputDoc), method: 'PUT',
-//     headers: {
-//         'Accept': 'application/json, text/plain, */*',
-//         'Content-Type': 'application/json'
-//       }
-//     })
-//       .then(res=>res.json())
-// }
+    return fetch(URL, {body: JSON.stringify(inputDoc), method: 'PUT',
+    headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(res=>res.json())
+}
